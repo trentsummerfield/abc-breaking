@@ -11,9 +11,11 @@ fn main() {
         .read_to_string(&mut buffer)
         .expect("failed to read");
     let b = get_breaking(&buffer);
-    for line in b {
+    for line in &b {
         println!("{}", line);
     }
+    let exit_code = if b.len() > 0 { 0 } else { 1 };
+    std::process::exit(exit_code);
 }
 
 fn get_breaking<'a>(s: &'a str) -> Vec<&'a str> {
