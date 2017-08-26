@@ -2,5 +2,3 @@
 name = "abc-breaking"
 version = "0.1.0"
 authors = ["Trent Summerfield <trent.summerfield@gmail.com>"]
-
-[dependencies]
