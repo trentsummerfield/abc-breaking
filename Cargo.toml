@@ -2,3 +2,6 @@
 name = "abc-breaking"
 version = "0.1.0"
 authors = ["Trent Summerfield <trent.summerfield@gmail.com>"]
+
+[dependencies]
+native-tls = "0.2"

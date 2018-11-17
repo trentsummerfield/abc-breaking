@@ -1,8 +1,13 @@
+extern crate native_tls;
+
+use native_tls::TlsConnector;
 use std::net::TcpStream;
 use std::io::{Read, Write};
 
 fn main() {
-    let mut connection = TcpStream::connect("www.abc.net.au:80").expect("Could not connect to abc");
+    let tls_connector = TlsConnector::new().unwrap();
+    let stream = TcpStream::connect("www.abc.net.au:443").expect("Could not connect to abc");
+    let mut connection = tls_connector.connect("abc.net.au", stream).unwrap();
     let mut buffer = String::new();
     write!(&mut connection, "GET /news/ HTTP/1.0\r\n").expect("failed to write method");
     write!(&mut connection, "Host: www.abc.net.au\r\n").expect("failed to write Host header");
